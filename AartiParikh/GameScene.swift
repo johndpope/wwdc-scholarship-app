@@ -21,11 +21,36 @@ class GameScene: SKScene {
     var midpointy: CGFloat = 0
     
     var textView = UITextView( frame:CGRectMake(0, 20, 200, 40))
-    
+    var ellipse = SKShapeNode(path: CGPathCreateWithRoundedRect(CGRectMake(400, 250, 800, 600),4,4,nil))
+    let tileLabel = SKLabelNode(fontNamed:"ThrowMyHandsUpintheAir")
     
     override func didMoveToView(view: SKView) {
         midpointx = self.size.width/2
         midpointy = self.size.height/2
+
+        
+        //textView for resume tiles
+        textView = UITextView( frame:CGRectMake(midpointx, midpointy+20, 750, 390))
+        textView.center = view.center
+        textView.textColor = UIColor.blackColor()
+        
+        textView.font = UIFont(name: "Usherwood-Book", size: 25)
+
+        textView.backgroundColor = UIColor(rgba: "#F6F6F6")
+        
+        ellipse = SKShapeNode(path: CGPathCreateWithRoundedRect(CGRectMake(midpointx - 400, midpointy-200, 800, 450),4,4,nil))
+        ellipse.strokeColor = UIColor(rgba: "#FF6961")
+        ellipse.lineWidth = 8
+        ellipse.fillColor = UIColor(rgba: "#F6F6F6")
+        ellipse.zPosition = 5
+//        ellipse.alpha = 0.8
+        ellipse.name = "tile"
+        
+        tileLabel.color = SKColor.whiteColor()
+        tileLabel.fontSize = 40;
+        tileLabel.fontColor = SKColor.redColor()
+        tileLabel.position = CGPoint(x:CGRectGetMidX(self.frame) , y:CGRectGetMidY(self.frame)+200);
+        
         
         // Sky
         let skyTexture = SKTexture(imageNamed: "sky")
@@ -34,12 +59,6 @@ class GameScene: SKScene {
         sky.position = CGPoint(x: midpointx, y: midpointy )
         sky.zPosition = -1
         self.addChild(sky)
-        
-        //textView for resume tiles
-        textView = UITextView( frame:CGRectMake(midpointx, midpointy+20, 200, 40))
-        textView.center = view.center
-        textView.textColor = UIColor.blackColor()
-        textView.backgroundColor = UIColor(rgba: "#F6F6F6")
         
         // Bird Particles
         let birds: SKEmitterNode = SKEmitterNode(fileNamed: "birds")
@@ -51,10 +70,10 @@ class GameScene: SKScene {
         myLabel.text = "Hello, This is Aarti!";
         myLabel.fontSize = 40;
         myLabel.fontColor = SKColor.redColor()
-        myLabel.position = CGPoint(x:0 , y:250);
+        myLabel.position = CGPoint(x:0 , y:300);
         myLabel.zPosition = 4
         sky.addChild(myLabel)
- 
+        
         // Parent node for all hills
         let hillsnode = SKNode()
         hillsnode.name = "hill"
@@ -110,7 +129,7 @@ class GameScene: SKScene {
         church.position = CGPoint(x: -1000, y: 200)
         church.zPosition = 2
         lhill.addChild(church)
-
+        
         // Trees on large hill
         for i in 0...3 {
             var tree = SKSpriteNode(imageNamed: "tree" )
@@ -129,8 +148,8 @@ class GameScene: SKScene {
         lhill.zPosition = 1
         hillsnode.addChild(lhill)
         sky.addChild(hillsnode)
-
-    
+        
+        
         // The Train
         let trainScale = CGFloat(0.5)
         backgroundLayer.name = "train"
@@ -165,7 +184,7 @@ class GameScene: SKScene {
         m1.zPosition = 2
         m1.zRotation = CGFloat(M_PI)
         engine.addChild(m1)
-
+        
         var m3 = SKSpriteNode(texture: m2)
         m3.name = "wheel2"
         m3.position = CGPoint(x: 0-15, y:0-70)
@@ -183,7 +202,7 @@ class GameScene: SKScene {
         let smoke1: SKEmitterNode = SKEmitterNode(fileNamed: "smoke")
         smoke1.position = CGPoint(x: 0+100, y:108)
         engine.addChild(smoke1)
-
+        
         var cartext = ["Education", "Interests", "Projects"]
         // Train Cars
         for i in 0...2 {
@@ -242,56 +261,55 @@ class GameScene: SKScene {
         /* Called when a touch begins */
         
         for touch in (touches as! Set<UITouch>) {
-           let location = touch.locationInNode(self)
-            
-            var ellipse = SKShapeNode(path: CGPathCreateWithRoundedRect(CGRectMake(CGRectGetMidX(self.frame)-400, CGRectGetMidY(self.frame)-250, 800, 400),4,4,nil))
-            ellipse.strokeColor = UIColor(rgba: "#FF6961")
-            ellipse.lineWidth = 8
-            ellipse.fillColor = UIColor(rgba: "#F6F6F6")
-            ellipse.zPosition = 5
-            ellipse.name = "tile"
-            
+            let location = touch.locationInNode(self)
             var node = self.nodeAtPoint(location)
-            // var train = self.childNodeWithName("train") as! SKSpriteNode
-
-            if (node.name == "car1" && education )
+            
+            if ( education || interests || projects)
             {
-                println( "remove education tab" )
+                println( "Toggle Tile" )
+                education = false
+                interests = false
+                projects = false
                 textView.removeFromSuperview()
                 self.childNodeWithName("tile")?.removeAllChildren()
                 self.childNodeWithName("tile")?.removeFromParent()
-                
-                
             }
-            
-            
-            if (node.name == "car0" && !education){
-            education = true
-            
-            var car0 = backgroundLayer.childNodeWithName("car0") as! SKSpriteNode
-            var car1 = backgroundLayer.childNodeWithName("car1") as! SKSpriteNode
-            
-            touch.locationInNode(car0)
-            let sparks: SKEmitterNode = SKEmitterNode(fileNamed: "sparks")
-            sparks.position = CGPoint(x: 0, y:0)
-            
-            car0.addChild(sparks)
-            let myLabel = SKLabelNode(fontNamed:"ThrowMyHandsUpintheAir")
-            myLabel.text = "Education"
-            myLabel.color = SKColor.whiteColor()
-            myLabel.fontSize = 40;
-            myLabel.fontColor = SKColor.redColor()
-            myLabel.position = CGPoint(x:CGRectGetMidX(self.frame) , y:CGRectGetMidY(self.frame)+200);
-            ellipse.addChild(myLabel)
-                
+            else if (node.name == "car0" && !education){
+                education = true
+                var car0 = backgroundLayer.childNodeWithName("car0") as! SKSpriteNode
+                tileLabel.text = "Education & Experience"
+                ellipse.addChild(tileLabel)
+                textView.text = "Co-Founder/CTO of KiteReaders\n\nFormer Sr. Engineer at Yahoo! on Advertising Platform\n\nWorked in Enterprise Healthcare at Mckesson\n\nBachelor of Electrical Engineering with Computer Science Minor\nCleveland State University, Magna Cum Laude\n\nCS Courses in Distributed Systems and Discrete Structures\nStanford University\n"
+                textView.sizeToFit()
 
-            textView.text = "Where am I?"
-            view!.addSubview(textView)
+                view!.addSubview(textView)
+                self.addChild(ellipse)
+            }
+            else if (node.name == "car1" && !interests ) {
+                interests = true
+                var car1 = backgroundLayer.childNodeWithName("car1") as! SKSpriteNode
+                tileLabel.text = "Interests"
+                ellipse.addChild(tileLabel)
+                textView.text = "Reading: Children's books, biographies, history and science fiction.\n\nProgramming Languages: Learning new programming languages. I have programmed in Lua, Java, Ruby and am now ramping up on Swift. I had quite a bit of fun with SpriteKit while building this app.\n\nWriting: I blog about education and children's books.\n\nTeaching: Math & CS. Taught Lua programming to a few kids in my neighborhood Summer 2014"
+                textView.sizeToFit()
+                view!.addSubview(textView)
+                self.addChild(ellipse)
+            }
+            else if (node.name == "car2" && !projects ) {
+                projects = true
+                var car2 = backgroundLayer.childNodeWithName("car2") as! SKSpriteNode
+                ellipse.addChild(tileLabel)
+                tileLabel.text = "Projects"
+                textView.text = "Being Global: a tri-lingual children's app, won an Appy award in the Multicultural Category, beating Disney's Small Wonder app.\n\nKitePress: Platform for managing, distributing and creating fixed-layout ebooks\n\nDatastructures in Ruby: Presented to Silicon Valley Ruby meetup\n\nExercism: Started the Lua track and contributed to several exercises"
+                textView.editable = false;
+                textView.dataDetectorTypes = UIDataDetectorTypes.Link;
+                textView.sizeToFit()
+                view!.addSubview(textView)
                 self.addChild(ellipse)
             }
         }
     }
-   
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         if lastUpdateTime > 0 {
