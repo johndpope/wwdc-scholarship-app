@@ -123,6 +123,8 @@ class GameScene: SKScene {
         lhill.position = CGPoint(x: CGFloat(0)*(-lhillTexture.size().width), y: -lhillTexture.size().height/2)
         lhill.zPosition = 1
         
+        
+        
         // Church on large hill
         var church = SKSpriteNode(imageNamed: "church" )
         church.name = "church"
@@ -146,6 +148,9 @@ class GameScene: SKScene {
         lhill.name = "lhill\(2)"
         lhill.position = CGPoint(x: CGFloat(1)*(lhillTexture.size().width), y: -lhillTexture.size().height/2)
         lhill.zPosition = 1
+        
+
+        
         hillsnode.addChild(lhill)
         sky.addChild(hillsnode)
         
@@ -230,8 +235,8 @@ class GameScene: SKScene {
         backgroundLayer.addChild(caboose)
         
         
-        var rotate = SKAction.rotateByAngle(CGFloat(M_PI_4), duration:0.5 )
-        let repeatAction = SKAction.repeatActionForever(rotate)
+        var rotate = SKAction.rotateByAngle(CGFloat(M_PI_2), duration:0.5 )
+        var repeatAction = SKAction.repeatActionForever(rotate)
         m1.runAction(repeatAction, withKey: "rotate")
         m3.runAction(repeatAction, withKey: "rotate")
         
@@ -278,8 +283,9 @@ class GameScene: SKScene {
                 education = true
                 var car0 = backgroundLayer.childNodeWithName("car0") as! SKSpriteNode
                 tileLabel.text = "Education & Experience"
+                //car0.childNodeWithName("label")
                 ellipse.addChild(tileLabel)
-                textView.text = "Co-Founder/CTO of KiteReaders\n\nFormer Sr. Engineer at Yahoo! on Advertising Platform\n\nWorked in Enterprise Healthcare at Mckesson\n\nBachelor of Electrical Engineering with Computer Science Minor\nCleveland State University, Magna Cum Laude\n\nCS Courses in Distributed Systems and Discrete Structures\nStanford University\n"
+                textView.text = "Co-Founder/CTO of KiteReaders\n\nFormer Sr. Engineer at Yahoo! on Advertising Platform\n\nWorked in Enterprise Healthcare at Mckesson\n\nBachelor of Electrical Engineering with Computer Science Minor\nCleveland State University, Magna Cum Laude\n\nCS Courses in Distributed Systems and Discrete Structures, Stanford University"
                 textView.sizeToFit()
 
                 view!.addSubview(textView)

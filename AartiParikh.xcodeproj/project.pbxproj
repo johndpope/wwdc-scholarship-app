@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D3EFDF31AECA1710095E7EC /* windb.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D3EFDF21AECA1710095E7EC /* windb.png */; };
+		4D3EFDF51AECA1770095E7EC /* windt.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D3EFDF41AECA1770095E7EC /* windt.png */; };
+		4D3EFDF81AECA6DC0095E7EC /* Wind2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D3EFDF61AECA6DC0095E7EC /* Wind2.png */; };
+		4D3EFDF91AECA6DC0095E7EC /* Wind3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D3EFDF71AECA6DC0095E7EC /* Wind3.png */; };
 		4DE73B421AEABBB600D6D693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE73B411AEABBB600D6D693 /* AppDelegate.swift */; };
 		4DE73B441AEABBB600D6D693 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4DE73B431AEABBB600D6D693 /* GameScene.sks */; };
 		4DE73B461AEABBB600D6D693 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE73B451AEABBB600D6D693 /* GameScene.swift */; };
@@ -58,6 +62,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D3EFDF21AECA1710095E7EC /* windb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = windb.png; path = "../../../../../Desktop/parallax-back/mainfile/windmill/windb.png"; sourceTree = "<group>"; };
+		4D3EFDF41AECA1770095E7EC /* windt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = windt.png; path = "../../../../../Desktop/parallax-back/mainfile/windmill/windt.png"; sourceTree = "<group>"; };
+		4D3EFDF61AECA6DC0095E7EC /* Wind2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Wind2.png; path = "../../../../../Desktop/parallax-back/mainfile/wind-1/Wind2.png"; sourceTree = "<group>"; };
+		4D3EFDF71AECA6DC0095E7EC /* Wind3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Wind3.png; path = "../../../../../Desktop/parallax-back/mainfile/wind-1/Wind3.png"; sourceTree = "<group>"; };
 		4DE73B3C1AEABBB600D6D693 /* AartiParikh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AartiParikh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE73B401AEABBB600D6D693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DE73B411AEABBB600D6D693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +204,10 @@
 		4DE73B721AEAE34F00D6D693 /* city */ = {
 			isa = PBXGroup;
 			children = (
+				4D3EFDF21AECA1710095E7EC /* windb.png */,
+				4D3EFDF41AECA1770095E7EC /* windt.png */,
+				4D3EFDF61AECA6DC0095E7EC /* Wind2.png */,
+				4D3EFDF71AECA6DC0095E7EC /* Wind3.png */,
 				4DE73B9E1AEAF1E600D6D693 /* church.png */,
 				4DE73B9F1AEAF1E600D6D693 /* school.png */,
 				4DE73BA01AEAF1E600D6D693 /* home2.png */,
@@ -326,6 +338,7 @@
 				4DE73B921AEAEC0900D6D693 /* wheel.png in Resources */,
 				4DE73BA51AEAF1E600D6D693 /* home3.png in Resources */,
 				4DE73B991AEAF08400D6D693 /* cow.png in Resources */,
+				4D3EFDF31AECA1710095E7EC /* windb.png in Resources */,
 				4DE73B4D1AEABBB600D6D693 /* Images.xcassets in Resources */,
 				4DE73B9B1AEAF09800D6D693 /* cloud.png in Resources */,
 				4DE73B8C1AEAEC0000D6D693 /* redengine.png in Resources */,
@@ -344,13 +357,16 @@
 				4DE73BBF1AEC43AA00D6D693 /* spark.png in Resources */,
 				4DE73B741AEAE9F900D6D693 /* largehill.png in Resources */,
 				4DE73BA71AEAF65E00D6D693 /* LaunchScreen.xib in Resources */,
+				4D3EFDF91AECA6DC0095E7EC /* Wind3.png in Resources */,
 				4DE73B8A1AEAEC0000D6D693 /* caboose.png in Resources */,
 				4DE73B6B1AEAC84600D6D693 /* ThrowMyHandsUpintheAir.ttf in Resources */,
 				4DE73B4B1AEABBB600D6D693 /* Main.storyboard in Resources */,
 				4DE73BA31AEAF1E600D6D693 /* school.png in Resources */,
 				4DE73B951AEAEC0900D6D693 /* smoke.png in Resources */,
 				4DE73BAF1AEC117100D6D693 /* birds.sks in Resources */,
+				4D3EFDF51AECA1770095E7EC /* windt.png in Resources */,
 				4DE73BA41AEAF1E600D6D693 /* home2.png in Resources */,
+				4D3EFDF81AECA6DC0095E7EC /* Wind2.png in Resources */,
 				4DE73BA91AEB2FF400D6D693 /* Engines.png in Resources */,
 				4DE73B881AEAEC0000D6D693 /* car.png in Resources */,
 			);
