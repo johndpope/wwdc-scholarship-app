@@ -2,4 +2,5 @@
 Swift App for WWDC Scholarship
 
 
-![Animated with SpriteKit](wwdc.gif)
+
+<img src="wwdc.gif"  height="400" />
